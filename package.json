@@ -8,16 +8,26 @@
   "dependencies": {
     "@inertiajs/react": "^1.0.0",
     "@sentry/browser": "^7.119.1",
+    "apexcharts": "^4.4.0",
     "autoprefixer": "^10.4.13",
     "classnames": "^2.3.2",
     "cross-env": "^7.0.3",
     "eslint": "^8.32.0",
+    "flatpickr": "^4.6.13",
+    "headlessui": "^0.0.0",
+    "jsvectormap": "^1.6.0",
     "lodash": "^4.17.21",
     "lucide-react": "^0.378.0",
+    "match-sorter": "^8.0.0",
     "postcss-import": "^15.1.0",
     "react": "^18.2.0",
+    "react-apexcharts": "^1.7.0",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.5.1",
+    "react-icons": "^5.4.0",
+    "react-toastify": "^11.0.3",
     "react-use": "^17.4.0",
+    "sort-by": "^1.2.0",
     "tailwindcss": "^3.4.3"
   },
   "devDependencies": {
@@ -28,9 +38,13 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.2.1",
     "eslint-plugin-react": "^7.32.1",
+    "file-loader": "^6.2.0",
     "laravel-vite-plugin": "^1.0.4",
     "postcss": "^8.4.21",
+    "prettier": "^3.5.0",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "typescript": "^5.4.5",
-    "vite": "^5.4.14"
+    "vite": "^5.4.14",
+    "webpack": "^5.97.1"
   }
 }
