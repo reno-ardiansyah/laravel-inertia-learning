@@ -4,13 +4,12 @@ import ChartOne from '@/Components/Charts/ChartOne';
 import ChartThree from '@/Components/Charts/ChartThree';
 import ChartTwo from '@/Components/Charts/ChartTwo';
 import ChatCard from '@/Components/Chat/ChatCard';
-import MapOne from '@/Components/Maps/MapOne';
 import TableOne from '@/Components/Tables/TableOne';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 
 const ECommerce = () => {
   return (
-    <>
+    <DashboardLayout>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
         <CardDataStats title="Total views" total="$3.456K" rate="0.43%" levelUp>
           <svg
@@ -102,18 +101,13 @@ const ECommerce = () => {
         <ChartOne />
         <ChartTwo />
         <ChartThree />
-        <MapOne />
         <div className="col-span-12 xl:col-span-8">
           <TableOne />
         </div>
         <ChatCard />
       </div>
-    </>
+    </DashboardLayout>
   );
 };
-
-ECommerce.layout = (page: React.ReactNode) => (
-  <DashboardLayout title="Organizations" children={page} />
-);
 
 export default ECommerce;
