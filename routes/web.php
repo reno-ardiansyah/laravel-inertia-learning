@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\DashboardController;
@@ -40,6 +41,10 @@ Route::get('/', [DashboardController::class, 'index'])
     ->middleware('auth');
 
 // Users
+
+Route::middleware('auth')->name('admin.')->group(function () {
+    Route::apiResource('permissions', PermissionController::class)->names('permissions');
+});
 
 Route::get('users', [UsersController::class, 'index'])
     ->name('users')
