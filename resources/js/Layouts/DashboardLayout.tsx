@@ -1,14 +1,15 @@
 import React, { useState, ReactNode } from 'react';
-import Header from '@/Components/Headers/index';
-import Sidebar from '@/Components/Sidebar/index';
 import { Head } from '@inertiajs/react';
+import { SidebarInset, SidebarProvider } from '@/Components/ui/sidebar';
+import AppSidebar from '@/Components/Partials/AppSidebar';
+import AppHeaders from '@/Components/Partials/AppHeader';
 
 interface MainLayoutProps {
   title?: string;
   children: React.ReactNode;
 }
 
-const DashboardLayout: React.FC<MainLayoutProps> = ({ title, children })=> {
+const DashboardLayout: React.FC<MainLayoutProps> = ({ title, children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -17,25 +18,24 @@ const DashboardLayout: React.FC<MainLayoutProps> = ({ title, children })=> {
       <div className="dark:bg-boxdark-2 dark:text-bodydark">
         {/* <!-- ===== Page Wrapper Start ===== --> */}
         <div className="flex h-screen overflow-hidden">
-          {/* <!-- ===== Sidebar Start ===== --> */}
-          <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-          {/* <!-- ===== Sidebar End ===== --> */}
-
-          {/* <!-- ===== Content Area Start ===== --> */}
-          <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-            {/* <!-- ===== Header Start ===== --> */}
-            <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-            {/* <!-- ===== Header End ===== --> */}
-
-            {/* <!-- ===== Main Content Start ===== --> */}
-            <main>
-              <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-                {children}
+          <SidebarProvider>
+            {/* <!-- ===== Sidebar Start ===== --> */}
+            <AppSidebar />
+            {/* <!-- ===== Sidebar End ===== --> */}
+            {/* <!-- ===== Content Area Start ===== --> */}
+            <SidebarInset>
+              <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
+                <AppHeaders />
+                {/* <!-- ===== Main Content Start ===== --> */}
+                <main>
+                  <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+                    {children}
+                  </div>
+                </main>
+                {/* <!-- ===== Main Content End ===== --> */}
               </div>
-            </main>
-            {/* <!-- ===== Main Content End ===== --> */}
-          </div>
-          {/* <!-- ===== Content Area End ===== --> */}
+            </SidebarInset>
+          </SidebarProvider>
         </div>
         {/* <!-- ===== Page Wrapper End ===== --> */}
       </div>
