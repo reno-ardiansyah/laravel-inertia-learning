@@ -8,14 +8,15 @@ use App\Services\Permission\PermissionService;
 // use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
+use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
 {
-    protected $permissionService;
+    protected $permissionModel;
 
-    public function __construct(PermissionService $permissionService)
+    public function __construct(Permission $permissionModel)
     {
-        $this->permissionService = $permissionService;
+        $this->permissionModel = $permissionModel;
     }
     
     /**
@@ -24,10 +25,7 @@ class PermissionController extends Controller
     public function index()
     {
         return Inertia::render('Permissions/Index', [
-            'filters' => Request::all('search', 'sort_by', 'sort_by_desc','limit', 'page'),
-            'permissions' => PermissionResource::collection($this->permissionService->getPaginatedPermissions(
-                Request::only('search', 'sort_by', 'sort_by_desc', 'limit', 'page')
-            )->appends(Request::all())),
+            'permissions' => PermissionResource::collection($this->permissionModel->all()),
         ]);
     }
 
